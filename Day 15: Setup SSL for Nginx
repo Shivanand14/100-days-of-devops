@@ -58,4 +58,48 @@ curl -Ik https://stapp03
 
 
 
+1  clear
+    2  cd /tmp
+    3  ls -la
+    4  systemctl status nginx
+    5  cat /os/release
+    6  cat /etc/os-release
+    7  yum install nginx -y
+    8  systemctl status nginx
+    9  systemctl start nginx
+   10  systemctl status nginx
+   11  cd /etc/pki/
+   12  ls -l
+   13  cd tls
+   14  ls
+   15  ls -l
+   16  cd certs
+   17  ls -l
+   18  ls
+   19  cd ..
+   20  mv /tmp/nautilus.crt /etc/pki/tls/certs
+   21  mv /tmp/nautilus.key /etc/pki/tls/private
+   22  ls -l /etc/pki/tls/certs
+   23  ls -l /etc/pki/tls/provate
+   24  ls -l /etc/pki/tls/private
+   25  cd /etc/nginx
+   26  ls -l
+   27  vi nginx.conf
+   28  systemclt restart nginx
+   29  systemctl restart nginx
+   30  systemctl status nginx
+   31  cd usr/share/nginx/html/
+   32  cd usr/share/nginx/
+   33  cd usr
+   34  cd user
+   35  cd /usr/share/nginx/html/
+   36  ls -l
+   37  vi index.html
+   38  rm -rf index.html
+   39  vi index.html
+   40  cat index.html
+   41  nginx -t
+
+
+
 
