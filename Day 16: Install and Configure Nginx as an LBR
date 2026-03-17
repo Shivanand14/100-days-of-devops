@@ -1,0 +1,60 @@
+Day by day traffic is increasing on one of the websites managed by the Nautilus production support team. Therefore, the team has observed a degradation in website performance. Following discussions about this issue, the team has decided to deploy this application on a high availability stack i.e on Nautilus infra in Stratos DC. They started the migration last month and it is almost done, as only the LBR server configuration is pending. Configure LBR server as per the information given below:
+
+
+
+a. Install nginx on the LBR (load balancer) server if it is not already installed.
+
+
+b. Configure load-balancing with the http context making use of all App Servers. Ensure that you update only the main Nginx configuration file located at /etc/nginx/nginx.conf.
+
+
+c. Make sure you do not update the apache port that is already defined in the apache configuration on all app servers, also make sure apache service is up and running on all the app servers.
+
+
+d. Once done, you can access the website by running curl http://stlb01:80 in the terminal.
+
+
+------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>...........................................................
+to identify the port where the app servers are running:
+[tony@stapp01 ~]$ curl localhost:5002
+Welcome to xFusionCorp Industries![tony@stapp01 ~]$ history
+    1  sudo ss -tulp | grep httpd
+    2  sudo grep avt-profile-1 /etc/services
+    3  sudo /etc/services
+    4  curl localhost
+    5  cat /etc/httpd/conf/httpd.conf
+    6  curl localhost:5002
+    7  history
+
+[loki@stlb01 ~]$ history
+    1  sudo systemctl status nginx
+    2  sudo systemctl enable nginx
+    3  sudo systemctl status nginx
+    4  sudo systemctl start nginx
+    5  sudo systemctl status nginx
+    6  vi /etc/nginx/nginx.conf
+    7  sudo vi /etc/nginx/nginx.conf
+
+Add appserver details in upstream:
+upstream app_servers {
+
+        server stapp01:5002;
+        server stapp02:5002;
+        server stapp03:5002;
+
+        }
+    8  curl stapp01:5002
+    9  curl stapp02:5002
+   10  curl stapp03:5002
+   11  curl http:stlb01:80
+   12  curl http://stlb01:80
+   13  sudo vi /etc/nginx/nginx.conf
+
+Add apche location:
+
+location /  {
+        proxy_pass http://app_servers;
+                }
+   17  sudo nginx -t
+   18  sudo systemctl restart nginx
+   19  history
