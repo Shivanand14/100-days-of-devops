@@ -26,8 +26,12 @@ postgres=# \du
                                      List of roles
    Role name   |                         Attributes                         | Member of 
 ---------------+------------------------------------------------------------+-----------
- <db-user>     |                                                            | {}
+ kodekloud_top     |                                                            | {}
  postgres      | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+
+CREATE DATABASE kodekloud_db7;
+GRANT ALL PRIVILEGES ON DATABASE kodekloud_db7 TO kodekloud_top;
 
 
 
