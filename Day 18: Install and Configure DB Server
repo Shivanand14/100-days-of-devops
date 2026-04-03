@@ -1,0 +1,13 @@
+Install MariaDB Server:
+Login to the database server (ssh peter@stdb01) and install MariaDB.
+sudo yum install -y mariadb-server
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+2.Log in to MySQL as root and execute the configuration commands.
+mysql -u root -p
+CREATE DATABASE kodekloud_db8;
+CREATE USER 'kodekloud_cap'@'%' IDENTIFIED BY 'PASSWORD';
+GRANT ALL PRIVILEGES ON kodekloud_db8.* TO 'kodekloud_cap'@'%';
+FLUSH PRIVILEGES;
+EXIT;
+
