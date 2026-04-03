@@ -1,0 +1,41 @@
+xFusionCorp Industries is planning to host two static websites on their infra in Stratos Datacenter. The development of these websites is still in-progress, but we want to get the servers ready. Please perform the following steps to accomplish the task:
+a. Install httpd package and dependencies on app server 1.
+b. Apache should serve on port 5002.
+c. There are two website's backups /home/thor/news and /home/thor/apps on jump_host. Set them up on Apache in a way that news should work on the link http://localhost:5002/news/ and apps should work on link http://localhost:5002/apps/ on the mentioned app server.
+d. Once configured you should be able to access the website using curl command on the respective app server, i.e curl http://localhost:5002/news/ and curl http://localhost:5002/apps/
+
+============>>>>>>>>>>>>>>>>>>>>>>>========================================
+
+1  ls
+    2  sudo yum install httpd -y
+    3  sudo vi /etc/httpd/conf/httpd.conf
+    4  cat vi /etc/httpd/conf/httpd.conf | grep listen
+    5  cat /etc/httpd/conf/httpd.conf | grep listen
+    6  cat /etc/httpd/conf/httpd.conf | grep Listen
+    7  systemctl restart httpd
+    8  systemctl status httpd
+    9  sudo mv /tmp/news /var/www/html/
+   10  sudo mv /tmp/app /var/www/html/
+   11  sudo mv /tmp/apps /var/www/html/
+   12  ls
+   13  cd /var/www/html
+   14  ls
+   15  pwd
+
+
+1  sudo mv /tmp/news /var/www/html/
+    2  sudo mv /tmp/apps /var/www/html/
+
+ 1  curl http://stapp01:5002/news/
+    2  curl http://stapp01:5002/apps/
+    3  curl http://stapp01:5002/shiva/
+    4  curl http://stapp01:5002/shiva
+    5  curl -L http://stapp01:5002/shiva
+
+
+
+
+
+
+
+
